@@ -1,0 +1,26 @@
+body{
+  background-color: @bg-color-m;
+}
+#app{
+  padding-top: 64px;
+}
+strong,
+strong span{
+  font-weight: bold;
+}
+.card {
+  padding: @space-xl;
+  border-radius: @radius-l;
+  background-color: @bg-color-l;
+  &-title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: @space-l;
+    &-name {
+      .font-l();
+      font-weight: 600;
+      color: @font-color-l;
+    }
+  }
+}

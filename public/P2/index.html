@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+  <title>跳breaking的女孩</title>
+
+  <link rel="stylesheet" href="./css/main.css">s
+  <style>
+    * {
+      padding: 0;
+      margin: 0;
+    }
+
+    body {
+      background-color: #ebd2c3;
+    }
+
+    .nav {
+      background-color: #ebd2c3;
+      position: fixed;
+
+    }
+
+    .nav span {
+
+
+      margin-left: 210px;
+      font-size: 20px;
+      color: rgb(51, 99, 138);
+      ;
+      font-weight: 800;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="nav">
+    <span>上键或左键切换前一个动作，下键或右键切换下一个动作</span>
+  </div>
+  <div class="loading" id="js-loader">
+    <div class="loader"></div>
+  </div>
+
+  <div id="container">
+
+  </div>
+
+  <script type="importmap">
+    {
+      "imports": {
+        "three": "./js/three.module.js",
+        "three/addons/": "./js/"
+      }
+    }
+  </script>
+  <script type="module" src="./js/main.js">
+
+  </script>
+  <div class="lil-gui allow-touch-styles root autoPlace" style="--width: 310px;">
+    <div class="title" role="button" aria-expanded="true" tabindex="0">Controls</div>
+    <div class="children">
+      <div class="lil-gui allow-touch-styles">
+        <div class="title" role="button" aria-expanded="true" tabindex="0">Visibility</div>
+        <div class="children">
+          <div class="controller boolean">
+            <div class="name" id="lil-gui-name-1">show model</div><label class="widget"><input type="checkbox"
+                aria-labelledby="lil-gui-name-1"></label>
+          </div>
+          <div class="controller boolean">
+            <div class="name" id="lil-gui-name-2">show skeleton</div><label class="widget"><input type="checkbox"
+                aria-labelledby="lil-gui-name-2"></label>
+          </div>
+        </div>
+      </div>
+      <div class="lil-gui allow-touch-styles">
+        <div class="title" role="button" aria-expanded="true" tabindex="0">Activation/Deactivation</div>
+        <div class="children">
+          <div class="controller function">
+            <div class="widget"><button>
+                <div class="name" id="lil-gui-name-3">deactivate all</div>
+              </button></div>
+          </div>
+          <div class="controller function">
+            <div class="widget"><button>
+                <div class="name" id="lil-gui-name-4">activate all</div>
+              </button></div>
+          </div>
+        </div>
+      </div>
+      <div class="lil-gui allow-touch-styles">
+        <div class="title" role="button" aria-expanded="true" tabindex="0">Pausing/Stepping</div>
+        <div class="children">
+          <div class="controller function">
+            <div class="widget"><button>
+                <div class="name" id="lil-gui-name-5">pause/continue</div>
+              </button></div>
+          </div>
+          <div class="controller function">
+            <div class="widget"><button>
+                <div class="name" id="lil-gui-name-6">make single step</div>
+              </button></div>
+          </div>
+          <div class="controller number hasSlider">
+            <div class="name" id="lil-gui-name-7">modify step size</div>
+            <div class="widget">
+              <div class="slider">
+                <div class="fill" style="width: 44.4444%;"></div>
+              </div><input type="number" step="any" aria-labelledby="lil-gui-name-7">
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="lil-gui allow-touch-styles">
+        <div class="title" role="button" aria-expanded="true" tabindex="0">Crossfading</div>
+        <div class="children">
+          <div class="controller function">
+            <div class="widget"><button>
+                <div class="name" id="lil-gui-name-8">from walk to idle</div>
+              </button></div>
+          </div>
+          <div class="controller function disabled">
+            <div class="widget"><button disabled="">
+                <div class="name" id="lil-gui-name-9">from idle to walk</div>
+              </button></div>
+          </div>
+          <div class="controller function">
+            <div class="widget"><button>
+                <div class="name" id="lil-gui-name-10">from walk to run</div>
+              </button></div>
+          </div>
+          <div class="controller function disabled">
+            <div class="widget"><button disabled="">
+                <div class="name" id="lil-gui-name-11">from run to walk</div>
+              </button></div>
+          </div>
+          <div class="controller boolean">
+            <div class="name" id="lil-gui-name-12">use default duration</div><label class="widget"><input
+                type="checkbox" aria-labelledby="lil-gui-name-12"></label>
+          </div>
+          <div class="controller number hasSlider">
+            <div class="name" id="lil-gui-name-13">set custom duration</div>
+            <div class="widget">
+              <div class="slider">
+                <div class="fill" style="width: 35%;"></div>
+              </div><input type="number" step="any" aria-labelledby="lil-gui-name-13">
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="lil-gui allow-touch-styles">
+        <div class="title" role="button" aria-expanded="true" tabindex="0">Blend Weights</div>
+        <div class="children">
+          <div class="controller number hasSlider">
+            <div class="name" id="lil-gui-name-14">modify idle weight</div>
+            <div class="widget">
+              <div class="slider">
+                <div class="fill" style="width: 0%;"></div>
+              </div><input type="number" step="any" aria-labelledby="lil-gui-name-14">
+            </div>
+          </div>
+          <div class="controller number hasSlider">
+            <div class="name" id="lil-gui-name-15">modify walk weight</div>
+            <div class="widget">
+              <div class="slider">
+                <div class="fill" style="width: 100%;"></div>
+              </div><input type="number" step="any" aria-labelledby="lil-gui-name-15">
+            </div>
+          </div>
+          <div class="controller number hasSlider">
+            <div class="name" id="lil-gui-name-16">modify run weight</div>
+            <div class="widget">
+              <div class="slider">
+                <div class="fill" style="width: 0%;"></div>
+              </div><input type="number" step="any" aria-labelledby="lil-gui-name-16">
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="lil-gui allow-touch-styles">
+        <div class="title" role="button" aria-expanded="true" tabindex="0">General Speed</div>
+        <div class="children">
+          <div class="controller number hasSlider">
+            <div class="name" id="lil-gui-name-17">modify time scale</div>
+            <div class="widget">
+              <div class="slider">
+                <div class="fill" style="width: 66.6667%;"></div>
+              </div><input type="number" step="any" aria-labelledby="lil-gui-name-17">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>
