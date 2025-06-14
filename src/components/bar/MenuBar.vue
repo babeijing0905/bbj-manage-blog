@@ -11,11 +11,39 @@
         <yk-text>{{ item.name }}</yk-text>
       </yk-space>
     </router-link>
+
+    <!-- 添加模型组件和跳转按钮 -->
+    <div class="model-container" v-if="!isDigitalHumanPage">
+      <SimpleModel class="model" />
+      <yk-button
+        class="jump-btn"
+        type="secondary"
+        size="m"
+        status="success"
+        @click="jumpToDigitalHuman"
+      >
+        进入数字人
+      </yk-button>
+    </div>
   </yk-space>
 </template>
 
 <script lang="ts" setup>
 import { navLinks } from "../../utils/menu";
+import SimpleModel from "../digital-human/SimpleModel.vue";
+import { useRouter, useRoute } from "vue-router";
+import { computed } from "vue";
+
+const router = useRouter();
+const route = useRoute();
+
+const isDigitalHumanPage = computed(() => {
+  return route.path === "/digital-human";
+});
+
+const jumpToDigitalHuman = () => {
+  router.push("/digital-human");
+};
 </script>
 
 <style lang="less" scoped>
@@ -24,6 +52,7 @@ import { navLinks } from "../../utils/menu";
   position: fixed;
   top: 72px;
   left: 8px;
+  z-index: 100;
 
   &_nav {
     width: 160px;
@@ -57,6 +86,30 @@ import { navLinks } from "../../utils/menu";
       color: @white;
       font-weight: 600;
     }
+  }
+}
+.model-container {
+  position: absolute;
+  left: -160px;
+  bottom: -480px;
+  width: 500px;
+  height: 600px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: @space-m;
+
+  .model {
+    width: 100%;
+    height: calc(100% - 40px);
+    border-radius: @radius-l;
+    overflow: hidden;
+  }
+
+  .jump-btn {
+    position: absolute;
+    bottom: 140px;
+    left: 210px;
   }
 }
 </style>

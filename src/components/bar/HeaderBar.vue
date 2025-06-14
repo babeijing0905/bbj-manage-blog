@@ -22,7 +22,9 @@
         img-url="https://www.huohuo90.com:3003/user/6353b034dd4b583975e77fbe.png"
       ></yk-avatar>
       <div><yk-theme /></div>
-      <yk-button size="m" @click="logOut">exit </yk-button>
+      <yk-button size="m" @click="logOut" style="font-weight: 600"
+        >EXIT
+      </yk-button>
     </yk-space>
     <information :active="active" @close="changeActive(false)"></information>
   </div>
